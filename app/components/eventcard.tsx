@@ -21,6 +21,7 @@ export default function EventCard({ styling, photo, title, time, location, parag
             alt={photo.alt}
             fill={true}
             objectFit="contain"
+            priority={true}
           />
         </div>
         <div className="flex items-center md:w-2/3">
