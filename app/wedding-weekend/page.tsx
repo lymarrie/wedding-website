@@ -6,6 +6,7 @@ export default function WeddingWeekend() {
   const events = [
     {
       title: "Welcome Dinner",
+      day: "Friday",
       time: "5:00 PM",
       location: "Luc's Villa (Dining Hall)",
       photo: {
@@ -16,6 +17,7 @@ export default function WeddingWeekend() {
     },
     {
       title: "Wedding",
+      day: "Saturday",
       time: "4:30 PM",
       location: "Luc's Beach Cabana",
       photo: {
@@ -26,6 +28,7 @@ export default function WeddingWeekend() {
     },
     {
       title: "Farewell Brunch",
+      day: "Sunday",
       time: "10:00 AM",
       location: "Luc's Garden Terrace",
       photo: {
@@ -44,7 +47,7 @@ export default function WeddingWeekend() {
       </div>
       {events.map((event, index) => (
         <div className="section" key={index}>
-          <h2>{event.title}</h2>
+          <h2>{event.day}</h2>
           <EventCard 
             styling=""
             photo={event.photo}

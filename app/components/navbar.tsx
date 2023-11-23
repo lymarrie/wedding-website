@@ -10,7 +10,13 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+import { LayoutGroup } from 'framer-motion';
+import { Suspense } from 'react';
+import { motion } from 'framer-motion';
+import NavItem from './nav-item';
 
 const Navbar: React.FC = () => {
 
@@ -24,25 +30,36 @@ const Navbar: React.FC = () => {
     { name: "RSVP", href: "/rsvp" },
   ];
 
+  const navItems = {
+    '/': {
+      name: 'home',
+    },
+    '/wedding-weekend': {
+      name: 'Wedding Weekend',
+    },
+    '/tbd-and-luc': {
+      name: 'TBD and Luc',
+    },
+    '/faqs': {
+      name: 'FAQs',
+    },
+    '/travel': {
+      name: 'Travel',
+    },
+    '/accomodations': {
+      name: 'Accomodations',
+    },
+    '/rsvp': {
+      name: 'RSVP',
+    },
+  };
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 
   return (
-    // <nav className="">
-    //   <div className="hidden container mx-auto flex justify-center space-x-12 items-center tracking-wide">
-    //     {navigation.map((item) => (
-    //       <Link 
-    //         href={item.href}  
-    //         key={item.name}
-    //         className=""
-    //         >
-    //         {item.name}
-    //       </Link>
-    //     ))}
-    //   </div>
-    // </nav>
     <header className="">
-      <nav className="mx-auto flex max-w-7xl items-center justify-end tracking-wide p-10 lg:px-8 lg:justify-center" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-end tracking-wide p-4 lg:p-10 lg:justify-center" aria-label="Global">
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -54,11 +71,11 @@ const Navbar: React.FC = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="">
-              {item.name}
-            </a>
-          ))}
+          <Suspense fallback={null}>
+            {Object.entries(navItems).map(([path, { name }]) => {
+                  return <NavItem key={path} path={path} name={name} />;
+                })} 
+          </Suspense>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -81,7 +98,7 @@ const Navbar: React.FC = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7  hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7  hover:bg-cyan-100"
                   >
                     {item.name}
                   </a>
