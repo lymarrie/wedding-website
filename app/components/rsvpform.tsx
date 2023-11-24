@@ -8,14 +8,14 @@ const RSVPForm = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [dietaryRestrictions, setDietaryRestrictions] = useState(''); // New state for dietary restrictions
-  const [eventSelection, setEventSelection] = useState(
-    events.reduce((acc, event) => {
-      acc[event.id] = ''; // Initializing with an empty string as the default value
-      return acc;
-    }, {})
+  type EventSelection = Record<string, string>;
+  const [eventSelection, setEventSelection] = useState<EventSelection>(
+    Object.fromEntries(
+      events.map((event) => [event.id, '']) as [string, string][]
+    )
   );
 
-  const handleEventChange = (eventId, value) => {
+  const handleEventChange = (eventId: string, value: string) => {
     setEventSelection((prevSelection) => ({
       ...prevSelection,
       [eventId]: value,
