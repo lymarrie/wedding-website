@@ -19,12 +19,13 @@ const FindInvitation = () => {
     // Only proceed if the form is valid
     if (isFormValid) {
       try {
+        console.log("Fetching invite");
         const response = await fetch(`/api/find-invitation?firstName=${firstName}&lastName=${lastName}`);
         const data = await response.json();
-  
+
         if (response.ok && data.guestData) {
           // Update state with guest data if successful
-          // console.log(data.guestData);
+          console.log(data.guestData);
           setGuestData(data.guestData);
         } else {
           // Handle errors

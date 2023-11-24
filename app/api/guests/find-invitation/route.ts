@@ -8,15 +8,19 @@ export async function GET(request: NextRequest) {
     const firstName = searchParams.get('firstName');
     const lastName = searchParams.get('lastName');
 
+    console.log("guests/find-invitation: ", request.nextUrl);
+
     const protocol = request.headers.get('x-forwarded-proto') || 'http'; // Use 'http' as default
     const host = request.headers.get('host');
     const fullPath = `/api/guests/select?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
     const fullUrl = `${protocol}://${host}${fullPath}`;
 
+    console.log("guests/find-invitation request: ", fullUrl);
+
     const guestsResponse = await fetch(fullUrl);
     const guestsData = await guestsResponse.json();
 
-    // console.log(guestsData);
+    console.log("guests/find-invitation response: ", guestsData);
 
     // You can perform database operations or other tasks here
 

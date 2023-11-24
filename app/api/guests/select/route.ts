@@ -9,6 +9,8 @@ export async function GET(request: NextRequest) {
     const firstName = searchParams.get('firstName');
     const lastName = searchParams.get('lastName');
 
+    console.log("guests/select request.nextUrl: ", request.nextUrl);
+
     if (!firstName || !lastName) {
       throw new Error('Both FirstName and LastName are required for the query');
     }
@@ -37,6 +39,8 @@ export async function GET(request: NextRequest) {
       location: event.location,
       response: event.response || null, // Use response if available, otherwise set to null
     }));
+
+    console.log("guests/select response: ", { guest: guestQueryResult.rows[0], rsvps: formattedRsvps });
 
     return NextResponse.json({ guest: guestQueryResult.rows[0], rsvps: formattedRsvps }, { status: 200 });
   } catch (error) {
