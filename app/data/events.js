@@ -1,5 +1,6 @@
 const events = [
     {
+      id: "welcome-dinner",
       title: "Welcome Dinner",
       day: "Friday",
       time: "5:00 PM",
@@ -11,6 +12,7 @@ const events = [
       paragraph: "Join us for a dinner of pure indulgence featuring caviar, deep-sea sashimi, and Michelin-starred delights."
     },
     {
+      id: "wedding",
       title: "Wedding",
       day: "Saturday",
       time: "4:30 PM",
@@ -22,6 +24,7 @@ const events = [
       paragraph: "Experience a romantic wedding celebration on Luc's private beach, where love blossoms amidst the enchanting waves."
     },
     {
+      id: "brunch",
       title: "Farewell Brunch",
       day: "Sunday",
       time: "10:00 AM",
