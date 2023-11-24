@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
 
   const navItems = {
     '/': {
-      name: 'home',
+      name: 'Home',
     },
     '/wedding-weekend': {
       name: 'Wedding Weekend',

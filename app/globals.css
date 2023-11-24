@@ -33,3 +33,7 @@ h4{
 h5 {
   @apply font-semibold italic;
 }
+
+form {
+  @apply w-full;
+}
