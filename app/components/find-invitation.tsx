@@ -5,8 +5,10 @@ import { useState, useEffect } from 'react';
 const FindInvitation = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [isFormValid, setIsFormValid] = useState(false); // New state variable
+  const [isFormValid, setIsFormValid] = useState(false);
   const [guestData, setGuestData] = useState(null);
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [userNotFound, setUserNotFound] = useState(false);
 
   useEffect(() => {
     // Check form validity whenever firstName or lastName changes
@@ -16,23 +18,25 @@ const FindInvitation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setSubmitting(true);
+
     // Only proceed if the form is valid
     if (isFormValid) {
       try {
-        console.log("Fetching invite");
         const response = await fetch(`/api/find-invitation?firstName=${firstName}&lastName=${lastName}`);
         const data = await response.json();
-
-        if (response.ok && data.guestData) {
-          // Update state with guest data if successful
-          console.log(data.guestData);
-          setGuestData(data.guestData);
+        // console.log(data);
+        if (response.ok) {
+          setGuestData(data);
+          setSubmitting(false);
+          setUserNotFound(false);
         } else {
-          // Handle errors
           console.error('Error finding invitation:', data.error);
+          setSubmitting(false);
+          setUserNotFound(true);
         }
       } catch (error) {
-        console.error('Error finding invitation:', error);
+        console.error('Invalid form:', error);
       }
     }
   };
@@ -72,7 +76,7 @@ const FindInvitation = () => {
           </div>
         </div>
       ) : (
-        <form className="space-y-8 w-2/3">
+        <form className="space-y-4">
           <div className="flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-8">
             <div className="firstName">
               <label htmlFor="firstName" className="">
@@ -101,6 +105,15 @@ const FindInvitation = () => {
               />
             </div>
           </div>
+          {userNotFound ? 
+            <div className="">
+              <p className="text-red-500">User not found. Please check your first and last name again.</p>
+            </div>
+            :
+            <div>
+              <p className="py-4"></p>
+            </div>
+          }
           <div className="text-center pt-4">
             <button
               type="submit"
@@ -115,6 +128,7 @@ const FindInvitation = () => {
               Find Your Invitation
             </button>
           </div>
+
         </form>
       )}
     </>

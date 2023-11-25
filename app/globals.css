@@ -37,3 +37,13 @@ h5 {
 form {
   @apply w-full;
 }
+
+.skeleton {
+  @apply bg-gray-300 animate-pulse rounded-sm;
+}
+
+/* ImageCarousel.module.css */
+.carousel-image {
+  width: 100%;
+  height: auto;
+}
