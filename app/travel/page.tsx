@@ -21,7 +21,7 @@ export default function Travel() {
               priority={true}
               className="mx-auto w-2/3 rounded-lg" // Optional: Add rounded corners
             />
-            <p>Alternatively, you are more than welcome journey with TBD and Luc directly via their private yacht, which will be departing from Fiji one week before the wedding.</p>
+            <p>Alternatively, you are more than welcome to journey with TBD and Luc directly via their private yacht, which will be departing from Fiji one week before the wedding.</p>
             <Image 
               src="/yacht.png"
               alt="My Image"

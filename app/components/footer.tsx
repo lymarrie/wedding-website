@@ -1,7 +1,45 @@
 import React from 'react';
+import NavItem from './nav-item';
+import { Fragment, Suspense } from 'react';
+import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
+
 
 export default function Footer() {
+
+  const navItems = {
+    '/': {
+      name: 'Home',
+    },
+    '/wedding-weekend': {
+      name: 'Wedding Weekend',
+    },
+    '/tbd-and-luc': {
+      name: 'TBD and Luc',
+    },
+    '/faqs': {
+      name: 'FAQs',
+    },
+    '/travel': {
+      name: 'Travel',
+    },
+    '/accomodations': {
+      name: 'Accomodations',
+    },
+    '/rsvp': {
+      name: 'RSVP',
+    },
+  };
+  
   const navigation = {
+    main: [
+      { name: "Home", href: "/" },
+      { name: "Wedding Weekend", href: "/wedding-weekend" },
+      { name: "TBD and Luc", href: "/tbd-and-luc" },
+      { name: "FAQs", href: "/faqs" },
+      { name: "Travel", href: "/travel" },
+      { name: "Accomodations", href: "/accomodations" },
+      { name: "RSVP", href: "/rsvp" },
+    ],
     social: [
       {
         name: 'GitHub',
@@ -22,7 +60,14 @@ export default function Footer() {
     return(
       <footer className="">
         <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-          <div className="mt-10 flex justify-center space-x-10">
+          <nav className="-mb-6 columns-2 space-y-2 md:flex md:justify-center md:text-center md:space-x-6 md:space-y-0 lg:space-x-12" aria-label="Footer">
+          <Suspense fallback={null}>
+            {Object.entries(navItems).map(([path, { name }]) => {
+              return <NavItem key={path} path={path} name={name} />;
+            })} 
+          </Suspense>
+          </nav>
+          <div className="mt-10 pt-6 flex justify-center space-x-10">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} target="_blank" className="flex space-x-5 text-gray-700 hover:text-gray-500">
                 <span className="sr-only">{item.name}</span>
