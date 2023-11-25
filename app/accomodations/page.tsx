@@ -1,6 +1,12 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import ImageCarousel from '../components/carousel';
+
+export const metadata: Metadata = {
+  title: 'Accomodations',
+  description: 'Accomodations for the wedding.',
+};
 
 export default function Accomodations() {
 

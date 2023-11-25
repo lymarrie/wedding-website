@@ -1,5 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Travel',
+  description: 'Travel advice for getting to the wedding.',
+};
 
 export default function Travel() {
   return (

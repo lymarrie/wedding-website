@@ -1,10 +1,15 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import RSVPForm from '../components/rsvpform';
 import FindInvitation from '../components/find-invitation';
 
-export default function RSVP() {
+export const metadata: Metadata = {
+  title: 'RSVP',
+  description: 'RSVP page for the wedding.',
+};
 
+export default function RSVP() {
   return (
     <main className="flex min-h-screen flex-col items-center centered-container">
         <div className="space-y-4 text-center">

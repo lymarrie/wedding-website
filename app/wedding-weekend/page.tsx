@@ -2,7 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import EventCard from '../components/eventcard';
 import events from '../data/events'; // Adjust the path accordingly
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Wedding Weekend',
+  description: 'Schedule of events for the wedding weekend.',
+};
 
 export default function WeddingWeekend() {
 

@@ -1,5 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Luc',
+  description: 'The story of how TBD and Luc met.',
+};
 
 export default function Couple() {
   return (
