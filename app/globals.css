@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-orange-50;
+  @apply bg-orange-50 tracking-wide;
 }
 
 .centered-container {
@@ -32,4 +32,18 @@ h4{
 
 h5 {
   @apply font-semibold italic;
+}
+
+form {
+  @apply w-full;
+}
+
+.skeleton {
+  @apply bg-gray-300 animate-pulse rounded-sm;
+}
+
+/* ImageCarousel.module.css */
+.carousel-image {
+  width: 100%;
+  height: auto;
 }
