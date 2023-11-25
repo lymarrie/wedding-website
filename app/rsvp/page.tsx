@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import RSVPForm from '../components/rsvpform';
 import FindInvitation from '../components/find-invitation';

@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import EventCard from '../components/eventcard';
 import events from '../data/events'; // Adjust the path accordingly
