@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch guest information
-    const guestQueryResult = await sql`SELECT * FROM guests WHERE first_name ILIKE ${firstName} AND last_name ILIKE ${lastName};`;
+    const guestQueryResult = await sql`SELECT id, first_name, last_name, number_of_guests, rsvp_message FROM guests WHERE first_name ILIKE ${firstName} AND last_name ILIKE ${lastName};`;
 
     if (!guestQueryResult.rows.length) {
       throw new Error('Guest not found');
